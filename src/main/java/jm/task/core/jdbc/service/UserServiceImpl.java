@@ -10,17 +10,8 @@ import java.sql.*;
 
 public class UserServiceImpl implements UserService {
 
-
-  /*  static {
-        try {
-            connection = DriverManager.getConnection(URL, USER_NAME, PASSWORD);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-*/
-
-    UserDao userDao = new UserDaoJDBCImpl();
+//    UserDao userDao = new UserDaoJDBCImpl();
+UserDao userDao = new UserDaoJDBCImpl();
 
     public void createUsersTable() {
         userDao.createUsersTable();
