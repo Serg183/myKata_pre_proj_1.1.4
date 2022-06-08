@@ -9,8 +9,6 @@ import java.sql.*;
 
 public class Main {
     public static void main(String[] args) throws SQLException {
-        //реализуйте алгоритм здесь
-       // Util.getConnection();
         UserDao userDao = new UserDaoHibernateImpl();
 
         userDao.createUsersTable();
@@ -21,10 +19,11 @@ public class Main {
         userDao.saveUser("name4", "familia4", (byte) 101);
 
         userDao.removeUserById(1);
+
         userDao.getAllUsers();
 
-
         userDao.cleanUsersTable();
+
         userDao.dropUsersTable();
     }
 }
