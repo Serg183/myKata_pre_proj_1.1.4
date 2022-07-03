@@ -22,7 +22,7 @@ public class Util {
     private static SessionFactory sessionFactory = null;
 
 
-    public static Connection getConnection () {
+    public static Connection getConnection() {
         try {
             return connection = DriverManager.getConnection(URL, USER_NAME, PASSWORD);
         } catch (SQLException throwables) {
@@ -30,7 +30,8 @@ public class Util {
             throw new RuntimeException();
         }
     }
-    public static SessionFactory getHibernateConnection () {
+
+    public static SessionFactory getHibernateConnection() {
 
 
         try {
@@ -51,4 +52,14 @@ public class Util {
         return sessionFactory;
     }
 
+    public static Session getOpenSession() {
+        Session session = null;
+        try {
+            SessionFactory sessionFactory = getHibernateConnection();
+            session = sessionFactory.openSession();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        }
+        return session;
+    }
 }
