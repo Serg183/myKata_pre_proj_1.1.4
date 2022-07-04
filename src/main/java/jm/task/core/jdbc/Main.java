@@ -18,12 +18,12 @@ public class Main {
         userDao.saveUser("name3", "familia3", (byte) 19);
         userDao.saveUser("name4", "familia4", (byte) 101);
 
-        userDao.removeUserById(16);
+        userDao.removeUserById(2);
 
         userDao.getAllUsers();
 
-        userDao.cleanUsersTable();
+        //userDao.cleanUsersTable();
 
-        userDao.dropUsersTable();
+       // userDao.dropUsersTable();
     }
 }

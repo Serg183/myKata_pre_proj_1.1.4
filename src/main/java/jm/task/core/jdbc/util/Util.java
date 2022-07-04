@@ -19,12 +19,9 @@ public class Util {
     private static final String URL = "jdbc:mysql://localhost:3306/mydbtest";
     private static Connection connection;
 
-    private static SessionFactory sessionFactory = null;
-
-
     public static Connection getConnection() {
         try {
-            return connection = DriverManager.getConnection(URL, USER_NAME, PASSWORD);
+            return DriverManager.getConnection(URL, USER_NAME, PASSWORD);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
             throw new RuntimeException();
@@ -32,7 +29,7 @@ public class Util {
     }
 
     public static SessionFactory getHibernateConnection() {
-
+        SessionFactory sessionFactory = null;
 
         try {
             Configuration configuration = new Configuration()
@@ -47,8 +44,9 @@ public class Util {
             sessionFactory = configuration.buildSessionFactory(serviceRegistry);
         } catch (HibernateException e) {
             e.printStackTrace();
+        } catch (NullPointerException e) {
+            throw new NullPointerException("sessionFactory == null");
         }
-
         return sessionFactory;
     }
 
